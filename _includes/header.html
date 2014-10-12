@@ -1,0 +1,53 @@
+<header>
+
+	<meta http-equiv="refresh" content="1" />
+
+	<div class = "Diter">
+
+		<h1 id = "d">0</h1><h3 id = "caption">days</h3>
+			<hr>
+				<div class = "Titer">
+					<h2 id = "h">0</h2><h4 id = "caption">hours</h4>
+					<h2 id = "m">0</h2><h4 id = "caption">minutes</h4>
+					<h2 id = "s">0</h2><h4 id = "caption">seconds</h4>
+				</div>
+			</hr>
+		<script>
+
+			var eventDate;
+			var today;
+			var diff;
+			var d, h, m, s;
+
+			function createCountdown(date) {
+				eventDate = new Date(date);
+				today = new Date();
+				countdown();
+			}
+
+			function updateCount() {
+				diff = (eventDate.getTime() - today.getTime())/(1000 * 60 * 60 * 24);
+
+				d = Math.floor(diff);
+				diff -= d;
+				h = Math.floor(diff * 24);
+				diff = (diff * 24) - h;
+				m = Math.floor(diff * 60);
+				diff = (diff * 60) - m;
+				s = Math.floor(diff * 60);
+				diff = (diff * 60) - s;
+
+				document.getElementById("d").innerHTML = d;
+				document.getElementById("h").innerHTML = h;
+				document.getElementById("m").innerHTML = m;
+				document.getElementById("s").innerHTML = s;
+			}
+
+			function countdown() {
+				updateCount();
+			}
+ 
+		</script>
+		<script>createCountdown('October 31, 2014 00:00:00')</script>
+	</div>
+</header>
