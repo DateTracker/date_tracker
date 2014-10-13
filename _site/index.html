@@ -12,8 +12,6 @@
 
 <header>
 
-	<meta http-equiv="refresh" content="1" />
-
 	<div class = "Diter">
 
 		<h1 id = "d">0</h1><h3 id = "caption">days</h3>
@@ -26,39 +24,39 @@
 			</hr>
 		<script>
 
-			var eventDate;
+			var target_date;
 			var today;
 			var diff;
 			var d, h, m, s;
 
 			function createCountdown(date) {
-				eventDate = new Date(date);
+				target_date = new Date(date);
 				today = new Date();
 				countdown();
 			}
 
-			function updateCount() {
-				diff = (eventDate.getTime() - today.getTime())/(1000 * 60 * 60 * 24);
+			setInterval(function () {
+				target_date = new Date(target_date);
+				today = new Date();
+				seconds_left = (target_date.getTime() - today.getTime()) / 1000;
 
-				d = Math.floor(diff);
-				diff -= d;
-				h = Math.floor(diff * 24);
-				diff = (diff * 24) - h;
-				m = Math.floor(diff * 60);
-				diff = (diff * 60) - m;
-				s = Math.floor(diff * 60);
-				diff = (diff * 60) - s;
+				// do some time calculations
+			    d = parseInt(seconds_left / 86400);
+			    seconds_left = seconds_left % 86400;
+			     
+			    h = parseInt(seconds_left / 3600);
+			    seconds_left = seconds_left % 3600;
+			     
+			    m = parseInt(seconds_left / 60);
+			    s = parseInt(seconds_left % 60);
 
 				document.getElementById("d").innerHTML = d;
 				document.getElementById("h").innerHTML = h;
 				document.getElementById("m").innerHTML = m;
 				document.getElementById("s").innerHTML = s;
-			}
 
-			function countdown() {
-				updateCount();
-			}
- 
+			}, 1000);
+
 		</script>
 		<script>createCountdown('October 31, 2014 00:00:00')</script>
 	</div>
