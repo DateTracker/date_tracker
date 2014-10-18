@@ -8,35 +8,139 @@
   <meta name="description" content="Provide a description for your website to make it visible to search engines.">
   <meta rel="author" href="https://plus.google.com/b/116392188754803429731/116392188754803429731/about?hl=en&service=PLUS">
   <meta rel="publisher" href="https://plus.google.com/b/116392188754803429731/116392188754803429731/about?hl=en&service=PLUS">
-  <link href='http://fonts.googleapis.com/css?family=Lily+Script+One|Paytone+One|Fredoka+One|Fontdiner+Swanky|Indie+Flower|Fjalla+One|Bree+Serif|Cuprum|Pacifico|Changa+One|Pinyon+Script|Satisfy|Sacramento' rel='stylesheet' type='text/css'>
-
+  <link href='http://fonts.googleapis.com/css?family=Holtwood+One+SC' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="assets/css/all.css">
   <style>
-  	body {
-  		max-width: 1000px;
-  		text-align: center;
-  		margin: 0 auto;
 
-  		background: $bg-color;
-
-  	}
   </style>
 </head>
 <body>
 
 <header>
 
-	<div class = "Diter">
+	<canvas id="canvas" width="200" height="200">
+		<p>Your browser doesn't support canvas.</p>
+	</canvas>
 
-		<h1 id = "d">0</h1><h3 id = "caption">days</h3>
-			<hr>
-				<div class = "Titer">
-					<h2 id = "h">0</h2><h4 id = "caption">hours</h4>
-					<h2 id = "m">0</h2><h4 id = "caption">minutes</h4>
-					<h2 id = "s">0</h2><h4 id = "caption">seconds</h4>
-				</div>
-			</hr>
-		<script>
+	<script>
+
+		var canvas = document.getElementById("canvas");
+		// Initaliase size of canvas 
+		setInterval(function () {
+
+			target_date = new Date('October 31, 2014 00:00:00');//target_date);
+			today = new Date();
+			seconds_left = (target_date.getTime() - today.getTime()) / 1000;
+
+			// do some time calculations
+			d = parseInt(seconds_left / 86400);
+			seconds_left = seconds_left % 86400;
+				     
+			h = parseInt(seconds_left / 3600);
+			seconds_left = seconds_left % 3600;
+				     
+			m = parseInt(seconds_left / 60);
+			s = parseInt(seconds_left % 60);
+
+			canvas.width  = window.innerWidth;
+			canvas.height = window.innerHeight;
+			// Check the element is in the DOM and the browser supports canvas
+			if(canvas.getContext) {
+			// Initaliase a 2-dimensional drawing context
+			var context = canvas.getContext('2d');
+			//Canvas commands go here
+			var radius = 200;
+			var xxc = (window.innerWidth)/2;
+			var yyc = (window.innerHeight+radius*2)/2;
+
+			// Backdrop
+			// Hemisphere
+			context.beginPath();
+			context.fillStyle = "#3B0000";
+			context.arc(xxc,yyc,radius + ((radius/5)*4),0,Math.PI,true);
+			context.closePath();
+			context.fill();
+
+			// Hours pedal
+			// 24 hours
+			context.beginPath();
+			context.strokeStyle = "#550000";
+			context.arc(xxc,yyc,radius+((radius/8)*1),0, Math.PI + ((23-h)/(24/Math.PI)), true);
+			context.lineWidth = 250;
+			context.stroke();
+
+			// Minutes pedal
+			// 60 minutes
+			context.beginPath();
+			context.strokeStyle = "#801515";
+			context.arc(xxc,yyc,radius+((radius/8)*1),0, Math.PI + ((59-m)/(60/Math.PI)), true);
+			context.lineWidth = 150;
+			context.stroke();
+
+			// Seconds pedal
+			// 60 seconds
+			context.beginPath();
+			context.strokeStyle = "#AA3939";
+			context.arc(xxc,yyc,radius+((radius/8)*1),0, Math.PI + ((59-s)/(60/Math.PI)), true);
+			context.lineWidth = 50;
+			context.stroke();
+
+			// Hemisphere
+			context.beginPath();
+			context.fillStyle = "#D46A6A";
+			context.arc(xxc,yyc,radius,0,Math.PI,true);
+			context.closePath();
+			context.fill();
+
+			// Text for day
+			context.beginPath();
+			var day = "Day " + d ;
+			var lengthd = context.measureText(day);
+			var xxt = ((window.innerWidth)/2) - (lengthd.width*4);
+			var yyt = ((window.innerHeight+radius*2)/2) - 50;
+			context.fillStyle = "#801515";
+			context.font = "bold 75px Arial";
+			context.fillText(day, xxt, yyt);
+
+			// Text for event
+			context.beginPath();
+			var evt = "Rachels Birthday";
+			var lengthe = context.measureText(evt);
+			var xxte = ((window.innerWidth)/2) - (lengthe.width/2);
+			var yyte = ((window.innerHeight+radius*2)/2) + 75;
+			context.fillStyle = "#801515";
+			context.font = "bold 75px Arial";
+			context.fillText(evt, xxte, yyte);
+
+			// Line
+			context.beginPath();
+			context.strokeStyle = "#550000";
+			var ll = radius + ((radius/5)*16);
+			var xxl = ((window.innerWidth)/2) - (ll/2);
+			var yyl = (window.innerHeight+radius*2)/2;
+			context.moveTo(xxl, yyl);
+			context.lineTo(xxl + ll, yyl);
+			context.lineWidth = 5;
+			context.stroke();
+
+			// Line
+			context.beginPath();
+			context.strokeStyle = "#550000";
+			var ll = radius + ((radius/5)*8);
+			var xxl = ((window.innerWidth)/2) - (ll/2);
+			var yyl = ((window.innerHeight+radius*2)/2) + 100;
+			context.moveTo(xxl, yyl);
+			context.lineTo(xxl + ll, yyl);
+			context.lineWidth = 5;
+			context.stroke();
+
+
+			}
+		}, 60/1000);
+	</script>
+
+</header>
+<!--		<script>
 
 			var target_date;
 			var today;
@@ -73,14 +177,8 @@
 
 		</script>
 		<script>createCountdown('October 31, 2014 00:00:00')</script>
-	</div>
 </header>
-
-<posts>
-	<post>
-		Hello
-	</post>
-</posts>
+-->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="assets/js/functions.js"></script>
