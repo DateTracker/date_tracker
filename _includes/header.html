@@ -1,5 +1,5 @@
 <header>
-
+	<p class = "title"><strong>D</strong>ate<strong>C</strong>lock</p>
 	<canvas id="canvas" width="200" height="200">
 		<p>Your browser doesn't support canvas.</p>
 	</canvas>
@@ -7,6 +7,7 @@
 	<script>
 
 		var canvas = document.getElementById("canvas");
+		var sr = false;
 		// Initaliase size of canvas 
 		setInterval(function () {
 
@@ -36,7 +37,6 @@
 			var yyc = (window.innerHeight+radius*2)/2;
 
 			// Backdrop
-			// Hemisphere
 			context.beginPath();
 			context.fillStyle = "#3B0000";
 			context.arc(xxc,yyc,radius + ((radius/5)*4),0,Math.PI,true);
@@ -96,7 +96,7 @@
 
 			// Line
 			context.beginPath();
-			context.strokeStyle = "#550000";
+			context.strokeStyle = "#3B0000";
 			var ll = radius + ((radius/5)*16);
 			var xxl = ((window.innerWidth)/2) - (ll/2);
 			var yyl = (window.innerHeight+radius*2)/2;
@@ -107,7 +107,7 @@
 
 			// Line
 			context.beginPath();
-			context.strokeStyle = "#550000";
+			context.strokeStyle = "#3B0000";
 			var ll = radius + ((radius/5)*8);
 			var xxl = ((window.innerWidth)/2) - (ll/2);
 			var yyl = ((window.innerHeight+radius*2)/2) + 100;
