@@ -227,6 +227,7 @@ body {
   -webkit-text-size-adjust: 100%; }
 
 header {
+  overflow: hidden;
   background-image: url(../img/logo.svg);
   background-repeat: no-repeat, no-repeat;
   background-size: 100px 100px, cover;
@@ -235,11 +236,55 @@ header {
   padding: 0;
   width: 100%;
   height: 100%; }
+  header #top_nav li:hover ul {
+    display: block; }
+  header #top_nav {
+    display: block;
+    position: relative;
+    font: bold 16px Tahoma;
+    float: right;
+    margin-right: 30px;
+    margin-top: 44px; }
+  header #top_nav ul {
+    margin: 0;
+    padding: 0; }
+  header #top_nav li {
+    position: relative;
+    float: left;
+    list-style-type: none; }
+  header #top_nav ul:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  header #top_nav li a {
+    text-decoration: none;
+    display: block;
+    color: #AA3939;
+    margin: 0 30px 0 0; }
+  header #top_nav ul ul {
+    position: absolute;
+    display: none;
+    left: 0; }
+  header #top_nav ul ul li {
+    width: 100%; }
+  header #top_nav ul ul li a {
+    font: bold 14px Tahoma;
+    width: 100px;
+    padding: 2px; }
+  header #top_nav li a:hover {
+    color: #D46A6A; }
+  header #top_nav ul li a:hover, header #top_nav ul ul li a {
+    background: #801515; }
+  header img {
+    display: inline-block;
+    width: 35px;
+    margin: 5px; }
   header .title {
     padding: 32px 0 0 120px;
     font-size: 30px;
-    font-color: #000;
-    position: absolute; }
+    float: left; }
     header .title strong {
       font-size: 40px; }
   header canvas {

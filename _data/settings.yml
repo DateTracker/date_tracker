@@ -4,6 +4,10 @@
 title: Date Countdown
 description: I will give you a hint.
 
+menu:
+- {over: Settings, name: 'settings.svg'}
+- {over: Add Event, name: 'plus.svg'}
+
 #-------------------------------
 # SEO Section
 
@@ -13,3 +17,9 @@ seo:
   description: 'Provide a description for your website to make it visible to search engines.'
   rel-author: 'https://plus.google.com/b/116392188754803429731/116392188754803429731/about?hl=en&service=PLUS'
   rel-publisher: 'https://plus.google.com/b/116392188754803429731/116392188754803429731/about?hl=en&service=PLUS'
+
+#-------------------------------
+
+events:
+- {name: Rachels Birthday, date: 'October 31, 2014 00:00:00'}
+- {name: Date with Rachel, date: 'October 25, 2014 00:00:00'}

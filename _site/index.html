@@ -18,6 +18,27 @@
 
 <header>
 	<p class = "title"><strong>D</strong>ate<strong>C</strong>lock</p>
+
+	<div id = "top_nav">
+		<ul>
+			<li><a href="#"><img src="assets/img/icons/plus.svg"></img></a>
+				<ul>
+					
+						<li><a href="javascript:createCountdown('October 31, 2014 00:00:00', 'Rachels Birthday')">Rachels Birthday</a></li>
+					
+						<li><a href="javascript:createCountdown('October 25, 2014 00:00:00', 'Date with Rachel')">Date with Rachel</a></li>
+					
+					<li><a href="#">Create Event</a></li>
+				</ul>
+			</li>
+			<li><a href="#"><img src="assets/img/icons/settings.svg"></img></a>
+				<ul>
+					<li><a href="#">Appearance</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
 	<canvas id="canvas" width="200" height="200">
 		<p>Your browser doesn't support canvas.</p>
 	</canvas>
@@ -25,11 +46,19 @@
 	<script>
 
 		var canvas = document.getElementById("canvas");
-		var sr = false;
+		var target_date = 'June 9 2015 00:00:00';
+		var name = "Birthday";
+
+		function createCountdown(date, n) {
+				target_date = new Date(date);
+				today = new Date();
+				name = n;
+			}
+
 		// Initaliase size of canvas 
 		setInterval(function () {
 
-			target_date = new Date('October 31, 2014 00:00:00');//target_date);
+			target_date = new Date(target_date);
 			today = new Date();
 			seconds_left = (target_date.getTime() - today.getTime()) / 1000;
 
@@ -52,7 +81,7 @@
 			//Canvas commands go here
 			var radius = 200;
 			var xxc = (window.innerWidth)/2;
-			var yyc = (window.innerHeight+radius*2)/2;
+			var yyc = (window.innerHeight+radius/2)/2;
 
 			// Backdrop
 			context.beginPath();
@@ -96,18 +125,18 @@
 			context.beginPath();
 			var day = "Day " + d ;
 			var lengthd = context.measureText(day);
-			var xxt = ((window.innerWidth)/2) - (lengthd.width*4);
-			var yyt = ((window.innerHeight+radius*2)/2) - 50;
+			var xxt = xxc - (lengthd.width*4);
+			var yyt = yyc - 50;
 			context.fillStyle = "#801515";
 			context.font = "bold 75px Arial";
 			context.fillText(day, xxt, yyt);
 
 			// Text for event
 			context.beginPath();
-			var evt = "Rachels Birthday";
+			var evt = name;
 			var lengthe = context.measureText(evt);
-			var xxte = ((window.innerWidth)/2) - (lengthe.width/2);
-			var yyte = ((window.innerHeight+radius*2)/2) + 75;
+			var xxte = xxc - (lengthe.width/2);
+			var yyte = yyc + 75;
 			context.fillStyle = "#801515";
 			context.font = "bold 75px Arial";
 			context.fillText(evt, xxte, yyte);
@@ -116,8 +145,8 @@
 			context.beginPath();
 			context.strokeStyle = "#3B0000";
 			var ll = radius + ((radius/5)*16);
-			var xxl = ((window.innerWidth)/2) - (ll/2);
-			var yyl = (window.innerHeight+radius*2)/2;
+			var xxl = xxc - (ll/2);
+			var yyl = yyc;
 			context.moveTo(xxl, yyl);
 			context.lineTo(xxl + ll, yyl);
 			context.lineWidth = 5;
@@ -127,8 +156,8 @@
 			context.beginPath();
 			context.strokeStyle = "#3B0000";
 			var ll = radius + ((radius/5)*8);
-			var xxl = ((window.innerWidth)/2) - (ll/2);
-			var yyl = ((window.innerHeight+radius*2)/2) + 100;
+			var xxl = xxc - (ll/2);
+			var yyl = yyc + 100;
 			context.moveTo(xxl, yyl);
 			context.lineTo(xxl + ll, yyl);
 			context.lineWidth = 5;
@@ -140,45 +169,6 @@
 	</script>
 
 </header>
-<!--		<script>
-
-			var target_date;
-			var today;
-			var diff;
-			var d, h, m, s;
-
-			function createCountdown(date) {
-				target_date = new Date(date);
-				today = new Date();
-				countdown();
-			}
-
-			setInterval(function () {
-				target_date = new Date(target_date);
-				today = new Date();
-				seconds_left = (target_date.getTime() - today.getTime()) / 1000;
-
-				// do some time calculations
-			    d = parseInt(seconds_left / 86400);
-			    seconds_left = seconds_left % 86400;
-			     
-			    h = parseInt(seconds_left / 3600);
-			    seconds_left = seconds_left % 3600;
-			     
-			    m = parseInt(seconds_left / 60);
-			    s = parseInt(seconds_left % 60);
-
-				document.getElementById("d").innerHTML = d;
-				document.getElementById("h").innerHTML = h;
-				document.getElementById("m").innerHTML = m;
-				document.getElementById("s").innerHTML = s;
-
-			}, 1000);
-
-		</script>
-		<script>createCountdown('October 31, 2014 00:00:00')</script>
-</header>
--->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="assets/js/functions.js"></script>

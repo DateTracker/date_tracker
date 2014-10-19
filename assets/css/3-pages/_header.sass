@@ -1,9 +1,67 @@
 header
+	overflow: hidden
+
+	#top_nav li:hover ul
+		display: block
+
+	#top_nav
+		display: block
+		position: relative
+		font: bold 16px Tahoma
+		float: right
+		margin-right: 30px
+		margin-top: 44px
+
+	#top_nav ul
+		margin: 0
+		padding: 0
+
+	#top_nav li
+		position: relative
+		float: left
+		list-style-type: none
+
+	#top_nav ul:after
+		content: "."
+		display: block
+		height: 0
+		clear: both
+		visibility: hidden
+
+	#top_nav li a
+		text-decoration: none
+		display: block
+		color: #AA3939
+		margin: 0 30px 0 0
+
+	#top_nav ul ul
+		position: absolute
+		display: none
+		left: 0
+
+	#top_nav ul ul li
+		width: 100%
+
+	#top_nav ul ul li a
+		font: bold 14px Tahoma
+		width: 100px
+		padding: 2px
+
+	#top_nav li a:hover
+		color: #D46A6A
+
+	#top_nav ul li a:hover, #top_nav ul ul li a
+		background: #801515
+
+	img
+		display: inline-block
+		width: 35px
+		margin: 5px
+
 	.title
 		padding: 32px 0 0 120px
 		font-size: 30px
-		font-color: #000
-		position: absolute
+		float: left
 		strong
 			font-size: 40px
 
